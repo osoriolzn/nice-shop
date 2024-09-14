@@ -1,12 +1,29 @@
+import { BrowserRouter, Navigate, useRoutes } from 'react-router-dom'
+
+import Home from './pages/home'
+import Order from './pages/order'
+import Orders from './pages/ordes'
+
+import NavBar from './components/navbar'
+
+const AppRouters = () => {
+  const routes = useRoutes([
+    { path: '/', element: <Home /> },
+    { path: '/order', element: <Order /> },
+    { path: '/orders', element: <Orders /> },
+    { path: '*', element: <Navigate to='/' /> }
+  ])
+
+  return routes
+}
 
 function App() {
 
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">
-        Nice Shop
-      </h1>
-    </>
+    <BrowserRouter>
+      <AppRouters />
+      <NavBar />
+    </BrowserRouter>
   )
 }
 
