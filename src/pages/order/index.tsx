@@ -1,6 +1,10 @@
+import Layout from '../../components/layout'
+
 function Order() {
  return (
-    <div>Your order has been placed!</div>
+   <Layout>
+     <div>Your order has been placed!</div>
+   </Layout>
  )
 }
 
