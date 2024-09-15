@@ -25,7 +25,7 @@ function NavBar() {
 
       <ul className='flex items-center gap-3'>
         <li>
-          <NavLink to='/'>Ordenes</NavLink>
+          <NavLink to='/orders'>Ordenes</NavLink>
         </li>
         <img src='src/assets/shoppingCartIcon.svg' alt='Shopping Cart svg' />
       </ul>
