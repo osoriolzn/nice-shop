@@ -1,0 +1,21 @@
+#back-top {
+  position: sticky;
+  bottom: 32px;
+  left: 32px;
+  padding: 10px;
+  border-radius: 1000px;
+  box-shadow: 0 0 10px #00000035;
+  background: white;
+  background: #09f;
+  color: #fff;
+  text-decoration: none;
+  display: none;
+
+  &.visible {
+    display: block;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
