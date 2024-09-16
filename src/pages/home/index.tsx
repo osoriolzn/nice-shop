@@ -1,13 +1,20 @@
+import { useContext } from 'react'
+import { ShopContext } from '../../context'
 import Card from '../../components/card'
 import Layout from '../../components/layout'
-import itemsToRender from '../../mocks/products.json'
 
 function Home() {
+  const { products } = useContext(ShopContext)
+  
   const renderView = () => {
-    if (itemsToRender.length > 0) {
-      return itemsToRender.map(item => (
+    const productsToRender = products
+
+    if (productsToRender.length > 0) {
+      return productsToRender.map(item => (
         <Card key={item.id} data={item} />
       ))
+    } else {
+      return <p>No products available</p>
     }
   }
 
