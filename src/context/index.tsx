@@ -1,33 +1,19 @@
 import { ReactNode, createContext, useEffect, useState } from 'react'
 import responseData from '../mocks/products.json'
-
-type Product = {
-    id: number
-    title: string
-    price: number
-    description: string
-    category: string
-    image: string
-    rating: {
-      rate: number
-      count: number
-    }
-  }
-
-type ShopContextType = {
-  products: Product[]
-  setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
-}
+import { ProductType, ShoppingCartType, ShopContextType } from './types'
 
 const defaultContext: ShopContextType = {
   products: [],
-  setProducts: () => {}
+  shoppingCarts: [],
+  setProducts: () => {},
+  setShoppingCarts: () => {},
 }
 
 export const ShopContext = createContext(defaultContext)
 
 export function ShopProvider({ children }: {children: ReactNode}) {
-  const [products, setProducts] = useState<Product[]>([])
+  const [products, setProducts] = useState<ProductType[]>([])
+  const [shoppingCarts, setShoppingCarts] = useState<ShoppingCartType[]>([])
   
   useEffect(() => {
     setProducts(responseData)
@@ -37,7 +23,9 @@ export function ShopProvider({ children }: {children: ReactNode}) {
     <ShopContext.Provider
       value={{
         products,
-        setProducts
+        shoppingCarts,
+        setProducts,
+        setShoppingCarts
       }}
     >
       {children}
