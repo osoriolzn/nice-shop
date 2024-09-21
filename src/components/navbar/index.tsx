@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import ShoppingCart from '../Cart'
 
 function NavBar() {
   return (
@@ -27,7 +28,7 @@ function NavBar() {
         <li>
           <NavLink to='/orders'>Ordenes</NavLink>
         </li>
-        <img src='src/assets/shoppingCartIcon.svg' alt='Shopping Cart svg' />
+        <ShoppingCart />
       </ul>
     </nav>
   )
