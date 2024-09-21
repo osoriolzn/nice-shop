@@ -1,6 +1,6 @@
 import { ReactNode, createContext, useEffect, useState } from 'react'
 import responseData from '../mocks/products.json'
-import { ProductType, ShoppingCartType, ShopContextType } from './types'
+import { ProductType, ShopContextType } from './types'
 
 const defaultContext: ShopContextType = {
   products: [],
@@ -13,7 +13,7 @@ export const ShopContext = createContext(defaultContext)
 
 export function ShopProvider({ children }: {children: ReactNode}) {
   const [products, setProducts] = useState<ProductType[]>([])
-  const [shoppingCarts, setShoppingCarts] = useState<ShoppingCartType[]>([])
+  const [shoppingCarts, setShoppingCarts] = useState<ProductType[]>([])
   
   useEffect(() => {
     setProducts(responseData)
