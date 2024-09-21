@@ -1,10 +1,9 @@
 import { BrowserRouter, Navigate, useRoutes } from 'react-router-dom'
 import { ShopProvider } from './context'
-
 import Home from './pages/home'
 import Order from './pages/order'
-import Orders from './pages/ordes'
-
+import Orders from './pages/orders'
+import CheckoutMenu from './components/checkout'
 import NavBar from './components/navbar'
 
 const AppRouters = () => {
@@ -24,6 +23,7 @@ function App() {
     <ShopProvider>
       <BrowserRouter>
         <NavBar />
+        <CheckoutMenu />
         <AppRouters />
       </BrowserRouter>
     </ShopProvider>
