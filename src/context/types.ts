@@ -11,13 +11,13 @@ export type ProductType = {
   }
 }
 
-export type ShoppingCartType = {
-  quantity: number
-}
+// export type ShoppingCartType = {
+//   quantity: number
+// }
 
 export type ShopContextType = {
   products: ProductType[]
-  shoppingCarts: ShoppingCartType[]
+  shoppingCarts: ProductType[]
   setProducts: React.Dispatch<React.SetStateAction<ProductType[]>>
-  setShoppingCarts: React.Dispatch<React.SetStateAction<ShoppingCartType[]>>
+  setShoppingCarts: React.Dispatch<React.SetStateAction<ProductType[]>>
 }
