@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import ShoppingCart from '../Cart'
+import ShoppingCart from '../cart'
 
 function NavBar() {
   return (
