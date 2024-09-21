@@ -11,13 +11,13 @@ export type ProductType = {
   }
 }
 
-// export type ShoppingCartType = {
-//   quantity: number
-// }
-
 export type ShopContextType = {
+  isCheckoutMenuOpen: boolean
   products: ProductType[]
   shoppingCarts: ProductType[]
+  closeCheckoutMenu: () => void
+  openCheckoutMenu: () => void
+  setIsCheckoutMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
   setProducts: React.Dispatch<React.SetStateAction<ProductType[]>>
   setShoppingCarts: React.Dispatch<React.SetStateAction<ProductType[]>>
 }
