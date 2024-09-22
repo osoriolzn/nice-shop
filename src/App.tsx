@@ -17,12 +17,10 @@ const AppRouters = () => {
     { path: '/orders', element: <Orders /> },
     { path: '*', element: <Navigate to='/' /> }
   ])
-
   return routes
 }
 
 function App() {
-
   return (
     <ShopProvider>
       <BrowserRouter>
