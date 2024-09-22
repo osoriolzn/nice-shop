@@ -9,6 +9,10 @@ import NavBar from './components/navbar'
 const AppRouters = () => {
   const routes = useRoutes([
     { path: '/', element: <Home /> },
+    { path: '/men', element: <Home /> },
+    { path: '/women', element: <Home /> },
+    { path: '/jewelry', element: <Home /> },
+    { path: '/electronics', element: <Home /> },
     { path: '/order', element: <Order /> },
     { path: '/orders', element: <Orders /> },
     { path: '*', element: <Navigate to='/' /> }
