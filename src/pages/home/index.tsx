@@ -4,11 +4,11 @@ import Card from '../../components/card'
 import Layout from '../../components/layout'
 
 function Home() {
-  const { products } = useContext(ShopContext)
+  const { products, searchCategory, filteredProducts } = useContext(ShopContext)
   
   const renderView = () => {
-    const productsToRender = products
-
+    const productsToRender = searchCategory ? filteredProducts : products
+    
     if (productsToRender.length > 0) {
       return productsToRender.map(item => (
         <Card key={item.id} data={item} />
