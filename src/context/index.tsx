@@ -1,10 +1,11 @@
 import { ReactNode, createContext, useEffect, useState } from 'react'
 import responseData from '../mocks/products.json'
-import { ProductType, ShopContextType } from '../types/types'
+import { ProductType, OrderType, ShopContextType } from '../types/types'
 
 const defaultContext: ShopContextType = {
   filteredProducts: [],
   isCheckoutMenuOpen: false,
+  orders: [],
   products: [],
   searchCategory: '',
   shoppingCarts: [],
@@ -12,6 +13,7 @@ const defaultContext: ShopContextType = {
   openCheckoutMenu: () => {},
   setFilteredProducts: () => {},
   setIsCheckoutMenuOpen: () => {},
+  setOrders: () => {},
   setProducts: () => {},
   setSearchCategory: () => {},
   setShoppingCarts: () => {},
@@ -22,14 +24,17 @@ export const ShopContext = createContext(defaultContext)
 export function ShopProvider({ children }: {children: ReactNode}) {
   const [filteredProducts, setFilteredProducts] = useState<ProductType[]>([])
   const [isCheckoutMenuOpen, setIsCheckoutMenuOpen] = useState<boolean>(false)
+  const [orders, setOrders] = useState<OrderType[]>([])
   const [products, setProducts] = useState<ProductType[]>([])
   const [searchCategory, setSearchCategory] = useState<string>('')
   const [shoppingCarts, setShoppingCarts] = useState<ProductType[]>([])
-  
+
+  /*---------------------*/
   useEffect(() => {
     setProducts(responseData)
   }, [])
   
+  /*---------------------*/
   const filteredCategory = (products:ProductType[], searchCategory:string) => {
     return products?.filter(product => product.category.toLowerCase() === searchCategory.toLowerCase())
   }
@@ -49,14 +54,24 @@ export function ShopProvider({ children }: {children: ReactNode}) {
     }
   }, [products, searchCategory])
 
+  /*---------------------*/
+  const getOrders = localStorage.getItem('orders')
+  
+  useEffect(() => {
+    setOrders(getOrders ? JSON.parse(getOrders) : [])
+  }, [getOrders])
+
+  /*---------------------*/
   const openCheckoutMenu = () => setIsCheckoutMenuOpen(true)
   const closeCheckoutMenu = () => setIsCheckoutMenuOpen(false)
 
+  /*---------------------*/
   return (
     <ShopContext.Provider
       value={{
         filteredProducts,
         isCheckoutMenuOpen,
+        orders,
         products,
         searchCategory,
         shoppingCarts,
@@ -64,6 +79,7 @@ export function ShopProvider({ children }: {children: ReactNode}) {
         openCheckoutMenu,
         setFilteredProducts,
         setIsCheckoutMenuOpen,
+        setOrders,
         setProducts,
         setSearchCategory,
         setShoppingCarts
