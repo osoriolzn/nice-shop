@@ -3,7 +3,7 @@ type OrderCardProps = {
   title: string
   price: number
   imageUrl: string
-  handleDelete: (id: number) => void
+  handleDelete?: (id: number) => void
 }
 
 function OrderCard({ id, title, price, imageUrl, handleDelete }: OrderCardProps) {
@@ -31,7 +31,7 @@ function OrderCard({ id, title, price, imageUrl, handleDelete }: OrderCardProps)
       </div>
 
       <div className='flex items-center gap-2'>
-        <p className='text-lg font-medium'>${price}</p>
+        <p className='text-lg font-medium pr-1'>${price}</p>
         {renderIcon}
       </div>
     </div>
