@@ -11,9 +11,18 @@ export type ProductType = {
   }
 }
 
+export type OrderType = {
+  id: `${string}-${string}-${string}-${string}-${string}`
+  date: string,
+  items: ProductType[]
+  totalItems: number
+  totalPrice: number
+}
+
 export type ShopContextType = {
   filteredProducts: ProductType[]
   isCheckoutMenuOpen: boolean
+  orders: OrderType[]
   products: ProductType[]
   searchCategory: string
   shoppingCarts: ProductType[]
@@ -21,6 +30,7 @@ export type ShopContextType = {
   openCheckoutMenu: () => void
   setFilteredProducts: React.Dispatch<React.SetStateAction<ProductType[]>>
   setIsCheckoutMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
+  setOrders: React.Dispatch<React.SetStateAction<OrderType[]>>
   setProducts: React.Dispatch<React.SetStateAction<ProductType[]>>
   setSearchCategory: React.Dispatch<React.SetStateAction<string>>
   setShoppingCarts: React.Dispatch<React.SetStateAction<ProductType[]>>
