@@ -13,7 +13,7 @@ const AppRouters = () => {
     { path: '/women', element: <Home /> },
     { path: '/jewelry', element: <Home /> },
     { path: '/electronics', element: <Home /> },
-    { path: '/order', element: <Order /> },
+    { path: '/order/:id', element: <Order /> },
     { path: '/orders', element: <Orders /> },
     { path: '*', element: <Navigate to='/' /> }
   ])
