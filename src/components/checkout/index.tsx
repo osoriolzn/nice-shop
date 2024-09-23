@@ -1,13 +1,16 @@
 import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import { ShopContext } from '../../context'
-import OrderCard from '../order-card'
 import { ProductType } from '../../types/types'
+import OrderCard from '../order-card'
 
 function CheckoutMenu() {
   const {
     isCheckoutMenuOpen,
+    orders,
     shoppingCarts,
     closeCheckoutMenu,
+    setSearchCategory,
     setShoppingCarts
   } = useContext(ShopContext)
 
@@ -16,7 +19,25 @@ function CheckoutMenu() {
     setShoppingCarts(filteredItems)
   }
 
-//   const handleCheckout = () => {}
+  const handleCheckout = () => {
+    const date = new Date().toISOString()
+
+    const orderToAdd = {
+      id: crypto.randomUUID(),
+      date: date,
+      items: shoppingCarts,
+      totalItems: shoppingCarts.length,
+      totalPrice: totalPrice(shoppingCarts)
+    }
+    
+    const addOrder = [...orders, orderToAdd]
+    const saveOrderJson = JSON.stringify(addOrder)
+    localStorage.setItem('orders', saveOrderJson)
+
+    closeCheckoutMenu()
+    setSearchCategory('')
+    setShoppingCarts([])
+  }
 
   const totalPrice = (items:ProductType[]) => {
     let sum = 0
@@ -61,10 +82,14 @@ function CheckoutMenu() {
           <span className='font-light'>Total:</span>
           <span className='font-medium'>${totalPrice(shoppingCarts)}</span>
         </p>
-        {/* <Link to='/orders/last'>
-          <button className='bg-black text-white py-3 w-full rounded-lg' onClick={handleCheckout}>Checkout</button>
-          </Link> */}
-          <button className='text-xl font-medium bg-gray-700 text-white py-2 w-full rounded-lg'>Pagar</button>
+          <Link to='/orders'>
+            <button
+              className='text-xl font-medium bg-gray-700 text-white py-2 w-full rounded-lg'
+              onClick={handleCheckout}
+            >
+              Pagar
+            </button>
+          </Link>
       </div>
     </aside>
   )
